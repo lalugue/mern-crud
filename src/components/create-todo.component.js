@@ -12,6 +12,12 @@ export default class CreateTodo extends Component{
             todo_priority:'',
             todo_completed: false
         }
+
+        //bind all component's functions to this component
+        this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
+        this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
+        this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChangeTodoDescription(e){
@@ -31,6 +37,26 @@ export default class CreateTodo extends Component{
             todo_priority: e.target.value
         })
     }
+
+    onSubmite(e){
+        //prevent default behavior or HTML form submit
+        e.preventDefault();
+
+        console.log("Form submitted: ");
+        console.log(`Todo Description: ${this.state.todo_description}`)
+        console.log(`Todo Resposible: ${this.state.todo_responsible}`)
+        console.log(`Todo Priority: ${this.state.todo_priority}`)
+
+        //clean up form after submission
+        this.setState({
+            todo_description: '',
+            todo_responsible: '',
+            todo_priority: '',
+            todo_completed: false
+        })
+    }
+
+    
 
     render(){
         return(
