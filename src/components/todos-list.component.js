@@ -10,6 +10,7 @@ export default class TodosList extends Component{
         this.state = {todos: []};
     }
 
+    //fetch todos from backend
     componentDidMount(){
         axios.get('http://localhost:4000/todos')
             .then(res => {
@@ -26,7 +27,14 @@ export default class TodosList extends Component{
             <div>
             <h3>Todos List</h3>
             <table className="table table-striped" style={{marginTop:20}}>
-                
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Responsible</th>
+                    <th>Priority</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
             </table>
             </div>
         )
