@@ -2,7 +2,16 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-
+//define a Todo component for internal TodosList usage
+//._id is id property in MongoDB
+const Todo = props => (
+    <tr>
+        <td>{props.todo.todo_description}</td>
+        <td>{props.todo.todo_responsible}</td>
+        <td>{props.todo.todo_priority}</td>
+        <td><Link to={"/edit/"+props.todo._id}>Edit</Link></td>
+    </tr>
+)
 
 //export a single class (default export)
 export default class TodosList extends Component{
@@ -24,7 +33,7 @@ export default class TodosList extends Component{
             })
     }
 
-    todoList(){
+    todoList() {
         return this.state.todos.map((currentTodo,i)=>{
             return <Todo todo={currentTodo} key={i}/>
         })
@@ -44,7 +53,7 @@ export default class TodosList extends Component{
                 </tr>
             </thead>
             <tbody>
-                {this.TodoList()}
+                {this.todoList()}
             </tbody>
             </table>
             </div>
