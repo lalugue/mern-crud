@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+
+
 //export a single class (default export)
 export default class TodosList extends Component{
 
@@ -22,6 +24,12 @@ export default class TodosList extends Component{
             })
     }
 
+    todoList(){
+        return this.state.todos.map((currentTodo,i)=>{
+            return <Todo todo={currentTodo} key={i}/>
+        })
+    }
+
     render(){
         return(
             <div>
@@ -35,6 +43,9 @@ export default class TodosList extends Component{
                     <th>Action</th>
                 </tr>
             </thead>
+            <tbody>
+                {this.TodoList()}
+            </tbody>
             </table>
             </div>
         )
