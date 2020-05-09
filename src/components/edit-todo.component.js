@@ -97,6 +97,8 @@ export default class EditTodo extends Component{
         })
 
         this.props.history.push('/')
+        //update page by using location.reload() on native window object
+        window.location.reload()
     }
   
     render(){
