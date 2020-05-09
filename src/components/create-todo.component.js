@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import * as constants from "./constants"
 
 //export a single class (default export)
 export default class CreateTodo extends Component{
@@ -55,7 +56,7 @@ export default class CreateTodo extends Component{
             todo_completed : this.state.todo_completed
         }
 
-        axios.post('http://localhost:4000/todos/add',newTodo)
+        axios.post(constants.API_CREATE,newTodo)
              .then(res => console.log(res.data))
 
         //clean up form after submission

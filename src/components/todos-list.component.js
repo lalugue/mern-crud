@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import * as constants from './constants';
 
 //define a Todo component for internal TodosList usage
 //this is a row in the table component
@@ -24,7 +25,7 @@ export default class TodosList extends Component{
 
     //fetch todos from backend
     componentDidMount(){
-        axios.get('http://localhost:4000/todos')
+        axios.get(constants.API_GET)
             .then(res => {
                 this.setState({todos: res.data})
             })

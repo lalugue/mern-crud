@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import * as constants from "./constants"
+
 //export a single class (default export)
 export default class EditTodo extends Component{
 
@@ -27,7 +29,7 @@ export default class EditTodo extends Component{
         console.log('this is the props for editing: ')
         console.log(this.props)
         //the specific props location can be seen in developer console
-        axios.get('http://localhost:4000/todos/'+this.props.match.params.id)
+        axios.get(constants.API_GET + '/' + this.props.match.params.id)
             .then(res=>{
                 this.setState({
                     todo_description: res.data.todo_description,
@@ -83,7 +85,7 @@ export default class EditTodo extends Component{
             todo_completed : this.state.todo_completed
         }
 
-        axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id,newTodo)
+        axios.post(constants.API_UPDATE + '/' + this.props.match.params.id,newTodo)
              .then(res => console.log(res.data))
 
         //clean up form after submission
